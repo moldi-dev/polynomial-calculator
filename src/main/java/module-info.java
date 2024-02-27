@@ -12,6 +12,6 @@ module org.moldidev.main {
 
     opens org.moldidev.main to javafx.fxml;
     exports org.moldidev.main;
-    exports org.moldidev.main.controller;
-    opens org.moldidev.main.controller to javafx.fxml;
+    exports org.moldidev.controller;
+    opens org.moldidev.controller to javafx.fxml;
 }
