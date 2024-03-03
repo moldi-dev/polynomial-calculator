@@ -96,12 +96,12 @@ public interface PolynomialOperations {
         return "NULL";
     }
 
-    // TODO: implement the differentiatePolynomials method and test it
+    // TODO: implement the differentiatePolynomial method and test it
     static String differentiatePolynomial(Polynomial p) {
         return "NULL";
     }
 
-    // TODO: implement the integratePolynomials method and test it
+    // TODO: implement the integratePolynomial method and test it
     static String integratePolynomial(Polynomial p) {
         return "NULL";
     }
