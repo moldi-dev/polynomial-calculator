@@ -22,13 +22,13 @@ public class PolynomialTest {
         polynomial.getPolynomialMap().put(6, -5);
         polynomial.getPolynomialMap().put(7, -7);
 
-        assertEquals("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2", polynomial.polynomialToString());
+        assertEquals("-7x^7-5x^6+x^5-x^4+3x-2", polynomial.polynomialToString());
     }
 
     @Test
     public void stringToPolynomialToStringTest() {
         Polynomial polynomial = new Polynomial("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2");
 
-        assertEquals("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2", polynomial.polynomialToString());
+        assertEquals("-7x^7-5x^6+x^5-x^4+3x-2", polynomial.polynomialToString());
     }
 }

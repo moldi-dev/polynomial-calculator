@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Duration;
 import org.moldidev.model.Polynomial;
-import org.moldidev.model.PolynomialOperations;
+import org.moldidev.interfaces.PolynomialOperations;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,50 +36,14 @@ public class CalculatorController {
     private Timeline firstPolynomialErrorLabelClearTimeline = new Timeline();
     private Timeline secondPolynomialErrorLabelClearTimeline = new Timeline();
 
-    public Label getOperationLabel() {
-        return this.operationLabel;
-    }
-
-    public TextField getFirstPolynomialTextField() {
-        return this.firstPolynomialTextField;
-    }
-
-    public TextField getSecondPolynomialTextField() {
-        return this.secondPolynomialTextField;
-    }
-
-    public Button getComputeOperationButton() {
-        return this.computeOperationButton;
-    }
-
-    public ChoiceBox<String> getOperatorChoiceBox() {
-        return this.operatorChoiceBox;
-    }
-
-    public TextField getResultTextField() {
-        return this.resultTextField;
-    }
-
-    public Button getClearResultButton() {
-        return this.clearResultButton;
-    }
-
-    public Label getFirstPolynomialErrorLabel() {
-        return this.firstPolynomialErrorLabel;
-    }
-
-    public Label getSecondPolynomialErrorLabel() {
-        return this.secondPolynomialErrorLabel;
-    }
-
     @FXML
     public void initialize() {
         this.operatorChoiceBox.getItems().add("P(x) + Q(x)");
         this.operatorChoiceBox.getItems().add("P(x) - Q(x)");
         this.operatorChoiceBox.getItems().add("P(x) × Q(x)");
         this.operatorChoiceBox.getItems().add("P(x) ÷ Q(x)");
-        this.operatorChoiceBox.getItems().add("dP / dx");
-        this.operatorChoiceBox.getItems().add("dQ / dx");
+        this.operatorChoiceBox.getItems().add("P'(x)");
+        this.operatorChoiceBox.getItems().add("Q'(x)");
         this.operatorChoiceBox.getItems().add("∫ P(x) dx");
         this.operatorChoiceBox.getItems().add("∫ Q(x) dx");
 
@@ -120,7 +84,7 @@ public class CalculatorController {
                     resultPolynomial = PolynomialOperations.integratePolynomial(q);
                     break;
                 default:
-                    resultPolynomial = "";
+                    resultPolynomial = "INVALID OPERATION";
                     break;
             }
 

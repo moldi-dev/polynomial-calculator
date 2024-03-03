@@ -11,8 +11,8 @@
    <children>
       <Pane prefHeight="332.0" prefWidth="1253.0" style="-fx-background-color: black;">
          <children>
-            <TextField fx:id="firstPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="78.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the first polynomial P(X) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
-            <TextField fx:id="secondPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="157.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the second polynomial Q(X) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
+            <TextField fx:id="firstPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="78.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial P(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
+            <TextField fx:id="secondPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="157.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial Q(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
             <ChoiceBox fx:id="operatorChoiceBox" layoutX="39.0" layoutY="219.0" prefWidth="150.0" />
             <Button fx:id="computeOperationButton" layoutX="250.0" layoutY="217.0" mnemonicParsing="false" onAction="#onComputeOperationButtonClicked" text="Compute operation" textAlignment="CENTER" />
             <TextField fx:id="resultTextField" style="-fx-prompt-text-fill: #6f706f" editable="false" layoutX="669.0" layoutY="117.5" prefHeight="23.0" prefWidth="500.0" promptText="Result" />

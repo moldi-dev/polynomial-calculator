@@ -1,8 +1,10 @@
 package org.moldidev.model;
 
+import org.moldidev.interfaces.PolynomialOperations;
+
 import java.util.*;
 
-public class Polynomial implements PolynomialOperations{
+public class Polynomial implements PolynomialOperations {
     // Map's key: the power of x
     // Map's value: the coefficient of x
     // e.g: the monomial -2x^3 has the key 3 and value -2
@@ -42,17 +44,11 @@ public class Polynomial implements PolynomialOperations{
 
             // Append the sign
             if (coefficient < 0) {
-                if (i != entryList.size() - 1) {
-                    result.append(" - ");
-                }
-
-                else {
-                    result.append("-");
-                }
+                result.append("-");
             }
 
             else if (i < entryList.size() - 1) {
-                result.append(" + ");
+                result.append("+");
             }
 
             // Append the coefficient if not 1 or -1, or if it's the constant term
@@ -69,6 +65,16 @@ public class Polynomial implements PolynomialOperations{
             if (power > 1) {
                 result.append("^").append(power);
             }
+        }
+
+        // If the final result is an empty string, append a 0 to it
+        if (result.isEmpty()) {
+            result.append("0");
+        }
+
+        // If the first character from the result string is a '+' sign, remove it
+        if (result.toString().toCharArray()[0] == '+') {
+            result.deleteCharAt(0);
         }
 
         // Return the result string
