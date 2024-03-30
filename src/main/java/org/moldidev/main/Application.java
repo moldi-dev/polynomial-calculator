@@ -11,7 +11,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("application-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Polynomial calculator made by Moldovan Darius-Andrei, 30421");
+        stage.setTitle("Polynomial calculator application");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -26,29 +26,41 @@ public class Polynomial implements PolynomialOperations {
         this.polynomialMap = polynomialMap;
     }
 
+    /*
+     * @return String
+     *
+     * Convert the TreeMap representation of a polynomial into a readable string
+     * e.g. {0=1, 1=-1, 2=5} => 5x^2 - x + 1
+     */
     public String polynomialToString() {
         StringBuilder result = new StringBuilder();
 
-        // Store the reverse map of the polynomial in a list
-        List<Map.Entry<Integer, Integer>> entryList = new ArrayList<>(polynomialMap.entrySet());
-
         // Traverse the polynomial map from the end towards the beginning in order to show first the monomials with the highest degree
-        for (int i = entryList.size() - 1; i >= 0; i--) {
-            int power = entryList.get(i).getKey();
-            int coefficient = entryList.get(i).getValue();
+        for (Map.Entry<Integer, Integer> monomial : this.polynomialMap.descendingMap().entrySet()) {
+            int power = monomial.getKey();
+            int coefficient = monomial.getValue();
 
-            // If the current term is not a free term and has the coefficient 0, go to the next term
-            if (coefficient == 0 && power != 0) {
+            // Skip the terms with a zero coefficient
+            if (coefficient == 0) {
                 continue;
             }
 
-            // Append the sign
-            if (coefficient < 0) {
-                result.append("-");
+            // Append the sign with no spaces if we print the first monomial
+            if (result.isEmpty()) {
+                if (coefficient < 0) {
+                    result.append("-");
+                }
             }
 
-            else if (i < entryList.size() - 1) {
-                result.append("+");
+            // Append the sign with spaces to pretty print the rest of the polynomial
+            else {
+                if (coefficient < 0) {
+                    result.append(" - ");
+                }
+
+                else if (!result.isEmpty()) {
+                    result.append(" + ");
+                }
             }
 
             // Append the coefficient if not 1 or -1, or if it's the constant term
@@ -81,6 +93,12 @@ public class Polynomial implements PolynomialOperations {
         return result.toString();
     }
 
+    /*
+     * @param string
+     *
+     * Parse an input string and convert it into a TreeMap representation
+     * e.g. x^2 - 5x + 4 => {0=4, 1=-5, 2=1}
+     */
     private void stringToPolynomial(String string) {
         // Remove all the spaces from the input string
         string = string.replaceAll("\\s", "");
@@ -88,27 +106,30 @@ public class Polynomial implements PolynomialOperations {
         // Get the signs of the coefficients in the input string
         List<Character> coefficientSigns = new ArrayList<>();
 
-        for (int i = 0; i < string.toCharArray().length; i++) {
-            char c = string.toCharArray()[i];
+        // The firstCharacter variable is used for appending the correct sign of the first monomial in the input string
+        // If the very first character in the input string is a '-' sign, then the first given monomial has a negative coefficient
+        // Otherwise, if the sign is not specified or if it is a plus, the first monomial is considered positive
+        boolean firstCharacter = true;
 
-            if (i == 0) {
-                if (c == '-') {
+        for (char character : string.toCharArray()) {
+            if (firstCharacter) {
+                if (character == '-') {
                     coefficientSigns.add('-');
                 }
 
                 else {
                     coefficientSigns.add('+');
                 }
+
+                firstCharacter = false;
             }
 
-            else {
-                if (c == '-') {
-                    coefficientSigns.add('-');
-                }
+            else if (character == '+') {
+                coefficientSigns.add('+');
+            }
 
-                else if (c == '+'){
-                    coefficientSigns.add('+');
-                }
+            else if (character == '-') {
+                coefficientSigns.add('-');
             }
         }
 
@@ -179,8 +200,19 @@ public class Polynomial implements PolynomialOperations {
                     coefficient *= -1;
                 }
 
-                // Update the polynomial map
-                polynomialMap.put(power, coefficient);
+                // Check if the power already is in the polynomial map and update the new coefficient (e.g. 2x^2 - x^2 => x^2)
+                if (this.polynomialMap.containsKey(power)) {
+                    int monomialCoefficient = this.polynomialMap.get(power);
+                    int newPowerCoefficient = coefficient + monomialCoefficient;
+
+                    this.polynomialMap.remove(power);
+                    this.polynomialMap.put(power, newPowerCoefficient);
+                }
+
+                // Add a new key, value pair in the polynomial map
+                else {
+                    this.polynomialMap.put(power, coefficient);
+                }
 
                 // Go to the sign of the next coefficient
                 i++;

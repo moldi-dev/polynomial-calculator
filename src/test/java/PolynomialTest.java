@@ -5,14 +5,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PolynomialTest {
     @Test
-    public void stringToPolynomialTest() {
+    public void stringToPolynomialTest1() {
         Polynomial polynomial = new Polynomial("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2");
 
         assertEquals("{0=-2, 1=3, 4=-1, 5=1, 6=-5, 7=-7}", polynomial.getPolynomialMap().toString());
     }
 
     @Test
-    public void polynomialToStringTest() {
+    public void polynomialToStringTest1() {
         Polynomial polynomial = new Polynomial();
 
         polynomial.getPolynomialMap().put(0, -2);
@@ -22,13 +22,13 @@ public class PolynomialTest {
         polynomial.getPolynomialMap().put(6, -5);
         polynomial.getPolynomialMap().put(7, -7);
 
-        assertEquals("-7x^7-5x^6+x^5-x^4+3x-2", polynomial.polynomialToString());
+        assertEquals("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2", polynomial.polynomialToString());
     }
 
     @Test
-    public void stringToPolynomialToStringTest() {
+    public void stringToPolynomialToStringTest1() {
         Polynomial polynomial = new Polynomial("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2");
 
-        assertEquals("-7x^7-5x^6+x^5-x^4+3x-2", polynomial.polynomialToString());
+        assertEquals("-7x^7 - 5x^6 + x^5 - x^4 + 3x - 2", polynomial.polynomialToString());
     }
 }

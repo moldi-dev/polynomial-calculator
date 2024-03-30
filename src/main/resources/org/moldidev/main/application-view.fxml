@@ -9,17 +9,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="332.0" prefWidth="1253.0" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.moldidev.controller.CalculatorController">
    <children>
-      <Pane prefHeight="332.0" prefWidth="1253.0" style="-fx-background-color: black;">
+      <Pane prefHeight="332.0" prefWidth="1253.0" style="-fx-background-color: #1f1f1f;">
          <children>
-            <TextField fx:id="firstPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="78.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial P(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
-            <TextField fx:id="secondPolynomialTextField" style="-fx-prompt-text-fill: #6f706f" layoutX="39.0" layoutY="157.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial Q(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" />
+            <TextField fx:id="firstPolynomialTextField" layoutX="39.0" layoutY="78.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial P(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" style="-fx-prompt-text-fill: #6f706f" />
+            <TextField fx:id="secondPolynomialTextField" layoutX="39.0" layoutY="157.0" prefHeight="23.0" prefWidth="515.0" promptText="Input the polynomial Q(x) (e.g. -7x^7 - 5x^6 + x^5 - x^4 + 3x - 2)" style="-fx-prompt-text-fill: #6f706f" />
             <ChoiceBox fx:id="operatorChoiceBox" layoutX="39.0" layoutY="219.0" prefWidth="150.0" />
-            <Button fx:id="computeOperationButton" layoutX="250.0" layoutY="217.0" mnemonicParsing="false" onAction="#onComputeOperationButtonClicked" text="Compute operation" textAlignment="CENTER" />
-            <TextField fx:id="resultTextField" style="-fx-prompt-text-fill: #6f706f" editable="false" layoutX="669.0" layoutY="117.5" prefHeight="23.0" prefWidth="500.0" promptText="Result" />
+            <Button fx:id="computeOperationButton" layoutX="250.0" layoutY="219.0" mnemonicParsing="false" onAction="#onComputeOperationButtonClicked" text="Compute operation" textAlignment="CENTER" />
+            <TextField fx:id="resultTextField" editable="false" layoutX="669.0" layoutY="117.5" prefHeight="23.0" prefWidth="500.0" promptText="Result" style="-fx-prompt-text-fill: #6f706f" />
             <Button fx:id="clearResultButton" layoutX="870.0" layoutY="170.0" mnemonicParsing="false" onAction="#onClearResultButtonClicked" text="Clear result" textAlignment="CENTER" />
-            <Label fx:id="operationLabel" layoutX="39.0" layoutY="200.0" textFill="white" text="Select operation" />
+            <Label fx:id="operationLabel" layoutX="39.0" layoutY="200.0" text="Select operation" textFill="white" />
             <Label fx:id="firstPolynomialErrorLabel" layoutX="39.0" layoutY="51.0" textFill="#fc0000" />
             <Label fx:id="secondPolynomialErrorLabel" layoutX="39.0" layoutY="130.0" textFill="#fc0000" />
+            <Button fx:id="switchPolynomialsButton" layoutX="39.0" layoutY="260.0" mnemonicParsing="false" onAction="#onSwitchPolynomialsButtonClicked" text="Switch polynomials" />
          </children>
       </Pane>
    </children>
